@@ -71,7 +71,7 @@
 				if ($(this.paginationHolderSelector).length == 0) {
 					throw new Error("The pagination doesn't exist.");
 				}
-				if ($(this.paginationHolderSelector).length == 0) {
+				if ($(this.paginationNextSelector).length == 0) {
 					throw new Error("The pagination next link doesn't exist.");
 				}
 				if (this.button.length == 0) {
@@ -83,9 +83,13 @@
 			}
 			this.init();
 		}
+		
 		$.fn.initInfScroll = function(opts) {
 			new InfiniteScrollContainer(this, opts);
 		}
-		$('.inf-scroll').initInfScroll();
+
+		if ($('.inf-scroll').length > 0) {
+			$('.inf-scroll').initInfScroll();
+		}
 	});
 }(window.jQuery, window, document));
