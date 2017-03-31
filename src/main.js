@@ -88,4 +88,4 @@
 		}
 		$('.inf-scroll').initInfScroll();
 	});
-}(window.jQuery, window, document));H
+}(window.jQuery, window, document));
