@@ -89,7 +89,9 @@
 		}
 
 		if ($('.inf-scroll').length > 0) {
-			$('.inf-scroll').initInfScroll();
-		}
+            $('.inf-scroll').each(function() {
+                $(this).initInfScroll();
+            });
+        }
 	});
 }(window.jQuery, window, document));
