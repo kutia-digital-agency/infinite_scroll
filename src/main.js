@@ -106,7 +106,7 @@
 			}
 
 			this.totalPages = function () {
-				return this.button.attr('data-totalPages');
+				return this.container.attr('data-totalPages');
 			}
 
 			this.doEvent = function(eventName) {
