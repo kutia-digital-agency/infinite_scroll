@@ -61,22 +61,26 @@
 					.text(th.button.attr('data-load-more-text'))
 					.removeClass('loading');
 
-					/**
-					 * Check if the perPage attribute isset and the newElements are less than the perPage,
-					 * or if the totalPages equals to the currentPage,
-					 * and call the allLoaded method.
-					 */
-					if (
-						(this.itemsPerPage && newElements.length < this.itemsPerPage) ||
-						(this.totalPages == th.container.data('infinitescroll').options.state.currPage)
-					) {
-					    th.allLoaded();
-					}
+					th.checkAllLoaded(newElements);
 				});
 				this.doEvent('onInitialized');
 
 				this.button.on('click', function() { th.onButtonClick() });
 				$(window).unbind('.infscr');
+			}
+
+			this.checkAllLoaded = function(newElements) {
+				/**
+				 * Check if the perPage attribute isset and the newElements are less than the perPage,
+				 * or if the totalPages equals to the currentPage,
+				 * and call the allLoaded method.
+				 */
+				if (
+					(this.itemsPerPage && newElements.length < this.itemsPerPage) ||
+					(this.totalPages == this.container.data('infinitescroll').options.state.currPage)
+				) {
+				    this.allLoaded();
+				}
 			}
 
 			this.destroy = function () {
