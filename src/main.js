@@ -7,6 +7,8 @@
 				paginationNextAttr: 'data-pagination-next',
 				loadMoreBtnAttr: 'data-load-more',
 				itemClassAttr: 'data-item-class',
+				itemsPerPageAttr: 'data-perPage',
+				totalPagesAttr: 'data-totalPages',
 				defaults: {
 					item_class: '.box-item',
 					loading_text: 'Loading...',
@@ -26,14 +28,20 @@
 			this.paginationNextSelector 	= this.container.attr(this.options.paginationNextAttr);
 			this.loadMoreBtnSelector 		= this.container.attr(this.options.loadMoreBtnAttr);
 			this.itemClass 					= this.container.attr(this.options.itemClassAttr) != undefined ? this.container.attr(this.options.itemClassAttr) : this.options.defaults.item_class;
-			
+			this.itemsPerPage				= this.container.attr(this.options.itemsPerPageAttr) != undefined ? Number(this.container.attr(this.options.itemsPerPageAttr)) : undefined;
+			this.totalPages					= this.container.attr(this.options.totalPagesAttr) != undefined ? Number(this.container.attr(this.options.totalPagesAttr)) : undefined;
+
 			this.init = function() {
-				if (this.totalPages() < 2) {
+				this.validate();
+
+				if (this.totalPages < 2) {
 					this.allLoaded();
+
 					return;
 				}
-				this.validate();
+
 				var th = this;
+				
 				this.button.attr('data-load-more-text', this.button.text());
 				
 				this.destroy();
@@ -53,7 +61,15 @@
 					.text(th.button.attr('data-load-more-text'))
 					.removeClass('loading');
 
-					if (th.totalPages() == th.container.data('infinitescroll').options.state.currPage) {
+					/**
+					 * Check if the perPage attribute isset and the newElements are less than the perPage,
+					 * or if the totalPages equals to the currentPage,
+					 * and call the allLoaded method.
+					 */
+					if (
+						(this.itemsPerPage && newElements.length < this.itemsPerPage) ||
+						(this.totalPages == th.container.data('infinitescroll').options.state.currPage)
+					) {
 					    th.allLoaded();
 					}
 				});
@@ -103,10 +119,6 @@
 				if (this.button.length == 0) {
 					throw new Error("The load more button doesn't exist.");
 				}
-			}
-
-			this.totalPages = function () {
-				return this.container.attr('data-totalPages');
 			}
 
 			this.doEvent = function(eventName) {
