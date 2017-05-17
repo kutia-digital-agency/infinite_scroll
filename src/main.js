@@ -15,10 +15,10 @@
 					all_loaded_text: 'All loaded'
 				},
 				events: {
-					onInitialized: function() {},
-					onDestroyed: function() {},
-					onAllLoaded: function() {},
-					onNewElements: function() {},
+					onInitialized: undefined,
+					onDestroyed: undefined,
+					onAllLoaded: undefined,
+					onNewElements: undefined,
 				}
 			}, typeof options == 'object' ? options : {});
 			
@@ -57,9 +57,7 @@
 				function(newElements) {
 					th.doEvent('onNewElements', newElements)
 
-					th.button
-					.text(th.button.attr('data-load-more-text'))
-					.removeClass('loading');
+					th.button.text(th.button.attr('data-load-more-text')).removeClass('loading');
 
 					th.checkAllLoaded(newElements);
 				});
