@@ -36,3 +36,13 @@ The container has to have these attributes for the infinite scroll to work:
         <a href="http://examplaurl.com?page=4">Last page</a>
     </div>
 ```
+
+Then on the footer of you site add the script to initialize the infinite scroll.
+
+```js
+
+    $('.inf-scroll').each(function() {
+        $(this).initInfScroll();
+    });
+
+```
