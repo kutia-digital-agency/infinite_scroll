@@ -39,10 +39,11 @@ The container has to have these attributes for the infinite scroll to work:
 
 Then on the footer of you site add the script to initialize the infinite scroll.
 
-```js
-
-    $('.inf-scroll').each(function() {
-        $(this).initInfScroll();
-    });
+```html
+    <script>
+        $('.inf-scroll').each(function() {
+            $(this).initInfScroll();
+        });
+    </script>
 
 ```
