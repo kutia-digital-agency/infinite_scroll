@@ -10,6 +10,7 @@ The container has to have these attributes for the infinite scroll to work:
         class="inf-scroll"
         data-pagination=".pagination-holder"
         data-pagination-next=".pagination-holder .next-page"
+        // The data-load-more is optional [if you want the loading to work with a button use the attr else remove it]
         data-load-more="#loadMore"
         data-item-class=".item-class"
         data-totalPages="20"
@@ -18,10 +19,23 @@ The container has to have these attributes for the infinite scroll to work:
         <div class="item-class"></div>
     </div>
 
-    <!-- The load more button -->
+```
+
+The load more button.
+If you have set the data-load-more attribute then you need to declare an element with that id
+
+```html
+
+    <!-- Example load more button -->
     <a href="javascript:void(0);" id="loadMore">Load more</a>
 
-    <!-- The pagination -->
+```
+
+The pagination.
+
+```html
+
+    <!-- Example pagination -->
     <div class="pagination-holder">
         <a href="http://examplaurl.com?page=1">First Page</a>
 
@@ -35,6 +49,7 @@ The container has to have these attributes for the infinite scroll to work:
 
         <a href="http://examplaurl.com?page=4">Last page</a>
     </div>
+
 ```
 
 Then on the footer of you site add the script to initialize the infinite scroll.
