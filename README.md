@@ -56,9 +56,7 @@ Then on the footer of you site add the script to initialize the infinite scroll.
 
 ```html
     <script>
-        $('.inf-scroll').each(function() {
-            $(this).initInfScroll();
-        });
+        $('.inf-scroll').initInfScroll();
     </script>
 
 ```
