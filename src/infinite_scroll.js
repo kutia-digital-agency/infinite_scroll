@@ -130,9 +130,9 @@
 				this.$button
 				.text(this.getAllLoadedText())
 				.removeAttr('id');
-
-				this.allAreLoaded = true;
 			}
+			
+			this.allAreLoaded = true;
 
 			this.destroy();
 		}
